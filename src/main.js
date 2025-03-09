@@ -12,7 +12,7 @@ import 'loaders.css/loaders.min.css';
 
 // Імпорт функцій з файлів
 import { responseData } from './js/pixabay-api';
-import { renderImages, clearGallery } from './js/render-functions';
+import { clearGallery } from './js/render-functions';
 
 // Імпорт іконки
 import iconSvgError from './img/webp/Group.png';

@@ -1,4 +1,4 @@
-export default function renderImages(images) {
+export default function clearGallery(images) {
   console.log('Дані для рендерингу:', images);
   const gallery = document.querySelector('.gallery');
   // const form = document.querySelector('.form');
