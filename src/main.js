@@ -53,7 +53,9 @@ function searchImages(event) {
   if (!query) {
     return;
   }
+
   loaderElement.classList.remove('visually-hidden');
+  
   clearGallery();
   // Очищаємо поле вводу
   form.reset();
