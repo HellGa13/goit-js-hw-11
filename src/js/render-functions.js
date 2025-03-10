@@ -1,8 +1,6 @@
-export default function clearGallery(images) {
-  console.log('Дані для рендерингу:', images);
+export function renderImages(images) {
+  console.log('Дані для рендерингу:', images); // Додано для перевірки даних
   const gallery = document.querySelector('.gallery');
-  // const form = document.querySelector('.form');
-  //   form.addEventListener('submit', searchImages);
   const galleryArray = images.map(image => {
     const {
       webformatURL,
@@ -50,4 +48,8 @@ export default function clearGallery(images) {
     return li;
   });
   gallery.append(...galleryArray);
+}
+export function clearGallery() {
+  const gallery = document.querySelector('.gallery');
+  gallery.innerHTML = '';
 }

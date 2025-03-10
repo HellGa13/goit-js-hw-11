@@ -1,22 +1,26 @@
-export default function getUrl(request) {
-  const API_KEY = '49206664-0ec6b9af3cdb6ffe721ed5088';
-  const BASE_URL = 'https://pixabay.com/api/';
+import axios from 'axios';
 
-  const imageParams = {
-    key: API_KEY,
+axios.defaults.baseURL = 'https://pixabay.com/api/';
+
+export function responseData(requestWords, additionalParams = {}) {
+  const requestParams = {
+    key: '49206664-0ec6b9af3cdb6ffe721ed5088',
+    q: requestWords,
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
     per_page: 15,
+    ...additionalParams,
   };
 
-  let URL = `${BASE_URL}?key=${API_KEY}&q=${encodeURIComponent(request)}`;
-
-  for (const param in imageParams) {
-    if (param !== 'key') {
-      URL += `&${param}=${imageParams[param]}`;
-    }
-  }
-
-  return URL;
+  return axios
+    .get('', {
+      params: requestParams,
+    })
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      throw error;
+    });
 }

@@ -1,18 +1,14 @@
-import axios from 'axios';
-// Описаний у документації
 import iziToast from "izitoast";
-// Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
-// Описаний у документації
+
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
-// loaders імпорт бібліотеки
+
 import 'loaders.css/loaders.min.css';
 
 // Імпорт функцій з файлів
 import { responseData } from './js/pixabay-api';
-import { clearGallery } from './js/render-functions';
+import { renderImages, clearGallery } from './js/render-functions';
 
 // Імпорт іконки
 import iconSvgError from './img/webp/Group.png';
@@ -31,7 +27,7 @@ const errorMesage = {
   iconUrl: iconSvgError,
 };
 
-// Ініціалізація галереї SimpleLightbox з налаштуваннями
+// Ініціалізація галереї
 let lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionsData: 'alt',
@@ -47,20 +43,17 @@ lightbox.on('error.simplelightbox', function (e) {
   console.log(e);
 });
 
-// Додаємо обробник події submit на форму
+
 form.addEventListener('submit', searchImages);
 
 function searchImages(event) {
-  // Відміняємо дію за замовченням (перезавантаження сторінки)
   event.preventDefault();
   // Отримуємо текст запиту з поля вводу
   const query = event.currentTarget.elements.searchQuery.value.trim();
   if (!query) {
     return;
   }
-  // Показуємо лоадер
   loaderElement.classList.remove('visually-hidden');
-  // Очищаємо галерею перед новим пошуком
   clearGallery();
   // Очищаємо поле вводу
   form.reset();
